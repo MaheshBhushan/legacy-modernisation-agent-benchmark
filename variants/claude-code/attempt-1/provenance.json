@@ -1,0 +1,31 @@
+{
+  "tool": "claude-code",
+  "command": [
+    "claude",
+    "--bare",
+    "--print",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions",
+    "--allowedTools",
+    "Read,Write,Edit",
+    "--model",
+    "sonnet",
+    "Read AGENT_TASK.md, contract.json, and public-cases.json in this directory. Implement the requested port.ts now. Do not read paths outside this directory. Do not run tests or inspect benchmark files. Finish after writing port.ts."
+  ],
+  "elapsedSeconds": 1.398,
+  "exitCode": 1,
+  "outcome": "cli-error",
+  "costUsd": null,
+  "humanMinutes": null,
+  "inputHashes": {
+    "AGENT_TASK.md": "689245500def962a6fec622e600ebdeebc65d6ea8a6d5bdac587d593174df9cf",
+    "contract.json": "9ef6cfbb4a5d8556ac4b16f478feed5be7184ffb8eb25a18c2d1a7e8de402f43",
+    "public-cases.json": "c758f0fdae3ba3bfa04dc36cb01894474f5f3e5f8f4d975fcdcbc81b0f158832"
+  },
+  "artifactSha256": null,
+  "isolation": "separate temporary working directory; instruction boundary, not security isolation",
+  "attempt": 1,
+  "feedbackRepairs": 0
+}

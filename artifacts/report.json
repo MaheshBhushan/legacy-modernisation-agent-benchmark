@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 1,
+  "seed": 241019,
+  "caseCount": 432,
+  "oracle": "legacy/sensor_config.c + strict Python JSON boundary",
+  "python": "3.14.6",
+  "manualBaseline": null,
+  "manualBaselineReason": "No independently produced human implementation or timed human trial was supplied.",
+  "studyLimitations": [
+    "One synthetic C program, one attempt per CLI, no statistical generalisation.",
+    "CLI model families and tool permissions differ; elapsed time includes service and tool latency.",
+    "Working directories restrict task inputs by instruction, not by a security sandbox.",
+    "Heldout cases are public after the frozen first attempt; repeat runs are contaminated.",
+    "Line count and strict compilation are descriptive proxies, not quality scores.",
+    "Cost and human effort remain unknown unless independently reported."
+  ],
+  "results": [
+    {
+      "name": "reference",
+      "authorship": "agent-authored reference",
+      "cases": 432,
+      "passed": 432,
+      "parity": 100.0,
+      "strictCompile": true,
+      "evaluationSeconds": 0.533,
+      "lines": 22,
+      "sha256": "3755d9d36786ff60fd54eb297d023d651d91458e938a95ec18d09c76def27b02",
+      "health": {
+        "compiled": true
+      },
+      "mismatches": [],
+      "provenance": null
+    },
+    {
+      "name": "claude-code",
+      "authorship": "unmodified CLI generation",
+      "cases": 432,
+      "passed": 0,
+      "parity": 0.0,
+      "strictCompile": false,
+      "evaluationSeconds": 0.0,
+      "lines": null,
+      "sha256": null,
+      "health": {
+        "compiled": false,
+        "error": "No generated artifact"
+      },
+      "mismatches": [
+        {
+          "index": 0,
+          "input": null,
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "$"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 1,
+          "input": [],
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "$"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 2,
+          "input": {},
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "$"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 3,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true,
+            "extra": 1
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "$"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 4,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 9,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 5,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 10,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 10,
+            "readingMilli": 22000,
+            "status": "ok",
+            "warnings": []
+          },
+          "actual": null
+        },
+        {
+          "index": 6,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 11,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 20,
+            "readingMilli": 22000,
+            "status": "ok",
+            "warnings": [
+              "sample-rounded"
+            ]
+          },
+          "actual": null
+        },
+        {
+          "index": 7,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 59999,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 60000,
+            "readingMilli": 22000,
+            "status": "ok",
+            "warnings": [
+              "sample-rounded"
+            ]
+          },
+          "actual": null
+        },
+        {
+          "index": 8,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 60000,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 60000,
+            "readingMilli": 22000,
+            "status": "ok",
+            "warnings": []
+          },
+          "actual": null
+        },
+        {
+          "index": 9,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 60001,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 10,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": null,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 11,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": true,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 12,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": "1",
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 13,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 1.5,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "sampleMs"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 14,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 0,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "gain"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 15,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 1,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 100,
+            "readingMilli": 22000,
+            "status": "ok",
+            "warnings": []
+          },
+          "actual": null
+        },
+        {
+          "index": 16,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 2,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 100,
+            "readingMilli": 44000,
+            "status": "ok",
+            "warnings": []
+          },
+          "actual": null
+        },
+        {
+          "index": 17,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 15,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 100,
+            "readingMilli": 125000,
+            "status": "high",
+            "warnings": [
+              "reading-clamped"
+            ]
+          },
+          "actual": null
+        },
+        {
+          "index": 18,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 16,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": true,
+            "profile": "temperature",
+            "effectiveSampleMs": 100,
+            "readingMilli": 125000,
+            "status": "high",
+            "warnings": [
+              "reading-clamped"
+            ]
+          },
+          "actual": null
+        },
+        {
+          "index": 19,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 17,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "gain"
+            }
+          },
+          "actual": null
+        }
+      ],
+      "provenance": {
+        "tool": "claude-code",
+        "command": [
+          "claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "bypassPermissions",
+          "--allowedTools",
+          "Read,Write,Edit",
+          "--model",
+          "sonnet",
+          "Read AGENT_TASK.md, contract.json, and public-cases.json in this directory. Implement the requested port.ts now. Do not read paths outside this directory. Do not run tests or inspect benchmark files. Finish after writing port.ts."
+        ],
+        "elapsedSeconds": 5.191,
+        "exitCode": 1,
+        "outcome": "cli-error",
+        "costUsd": null,
+        "humanMinutes": null,
+        "inputHashes": {
+          "AGENT_TASK.md": "689245500def962a6fec622e600ebdeebc65d6ea8a6d5bdac587d593174df9cf",
+          "contract.json": "9ef6cfbb4a5d8556ac4b16f478feed5be7184ffb8eb25a18c2d1a7e8de402f43",
+          "public-cases.json": "c758f0fdae3ba3bfa04dc36cb01894474f5f3e5f8f4d975fcdcbc81b0f158832"
+        },
+        "artifactSha256": null,
+        "isolation": "separate temporary working directory; instruction boundary, not security isolation",
+        "attempt": 2,
+        "feedbackRepairs": 0
+      }
+    },
+    {
+      "name": "codex",
+      "authorship": "unmodified CLI generation",
+      "cases": 432,
+      "passed": 432,
+      "parity": 100.0,
+      "strictCompile": true,
+      "evaluationSeconds": 0.532,
+      "lines": 65,
+      "sha256": "e4ba476af4d951d7fce895b20c8dc16be5b41bdd6fc900cebf4a01469c013eaa",
+      "health": {
+        "compiled": true
+      },
+      "mismatches": [],
+      "provenance": {
+        "tool": "codex",
+        "command": [
+          "codex",
+          "exec",
+          "--skip-git-repo-check",
+          "--sandbox",
+          "workspace-write",
+          "--model",
+          "gpt-6.1-sol",
+          "-c",
+          "model_reasoning_effort=\"medium\"",
+          "--json",
+          "Read AGENT_TASK.md, contract.json, and public-cases.json in this directory. Implement the requested port.ts now. Do not read paths outside this directory. Do not run tests or inspect benchmark files. Finish after writing port.ts."
+        ],
+        "elapsedSeconds": 26.967,
+        "exitCode": 0,
+        "outcome": "completed",
+        "costUsd": null,
+        "humanMinutes": null,
+        "inputHashes": {
+          "AGENT_TASK.md": "689245500def962a6fec622e600ebdeebc65d6ea8a6d5bdac587d593174df9cf",
+          "contract.json": "9ef6cfbb4a5d8556ac4b16f478feed5be7184ffb8eb25a18c2d1a7e8de402f43",
+          "public-cases.json": "c758f0fdae3ba3bfa04dc36cb01894474f5f3e5f8f4d975fcdcbc81b0f158832"
+        },
+        "artifactSha256": "e4ba476af4d951d7fce895b20c8dc16be5b41bdd6fc900cebf4a01469c013eaa",
+        "isolation": "separate temporary working directory; instruction boundary, not security isolation",
+        "attempt": 1,
+        "feedbackRepairs": 0
+      }
+    }
+  ]
+}

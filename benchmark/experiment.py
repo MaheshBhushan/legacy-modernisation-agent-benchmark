@@ -18,7 +18,7 @@ def run(tool):
         for name in ('AGENT_TASK.md','contract.json','public-cases.json'):
             shutil.copyfile(ROOT/'spec'/name,work/name)
         prompt='Read AGENT_TASK.md, contract.json, and public-cases.json in this directory. Implement the requested port.ts now. Do not read paths outside this directory. Do not run tests or inspect benchmark files. Finish after writing port.ts.'
-        command=(['claude','--bare','--print','--output-format','json','--permission-mode','bypassPermissions','--allowedTools','Read,Write,Edit','--model','sonnet',prompt] if tool=='claude-code' else ['codex','exec','--skip-git-repo-check','--sandbox','workspace-write','--model','gpt-6.1-sol','-c','model_reasoning_effort="medium"','--json',prompt])
+        command=(['claude','--print','--output-format','json','--permission-mode','bypassPermissions','--allowedTools','Read,Write,Edit','--model','sonnet',prompt] if tool=='claude-code' else ['codex','exec','--skip-git-repo-check','--sandbox','workspace-write','--model','gpt-6.1-sol','-c','model_reasoning_effort="medium"','--json',prompt])
         print(f'{tool}: starting isolated frozen attempt',flush=True)
         start=time.monotonic()
         try:
@@ -31,7 +31,7 @@ def run(tool):
         (target/'stdout.jsonl').write_bytes(stdout)
         (target/'stderr.log').write_bytes(stderr)
         if (work/'port.ts').exists(): shutil.copyfile(work/'port.ts',target/'port.ts')
-        metadata={'tool':tool,'command':command,'elapsedSeconds':round(time.monotonic()-start,3),'exitCode':code,'outcome':outcome,'costUsd':None,'humanMinutes':None,'inputHashes':{p.name:sha(p) for p in sorted(work.iterdir()) if p.name!='port.ts'},'artifactSha256':sha(target/'port.ts') if (target/'port.ts').exists() else None,'isolation':'separate temporary working directory; instruction boundary, not security isolation','attempt':1,'feedbackRepairs':0}
+        metadata={'tool':tool,'command':command,'elapsedSeconds':round(time.monotonic()-start,3),'exitCode':code,'outcome':outcome,'costUsd':None,'humanMinutes':None,'inputHashes':{p.name:sha(p) for p in sorted(work.iterdir()) if p.name!='port.ts'},'artifactSha256':sha(target/'port.ts') if (target/'port.ts').exists() else None,'isolation':'separate temporary working directory; instruction boundary, not security isolation','attempt':2 if tool=='claude-code' else 1,'feedbackRepairs':0}
         (target/'provenance.json').write_text(json.dumps(metadata,indent=2)+'\n')
         print(f'{tool}: {outcome}; port present={bool(metadata["artifactSha256"])}',flush=True)
 
