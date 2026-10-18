@@ -18,7 +18,7 @@ The raw records include CLI framework details and commands. Source and input SHA
 
 ## Evaluation
 
-The deterministic suite uses seed 241019 and 432 heldout requests:
+The deterministic suite uses seed 241019 and 430 heldout requests:
 
 | Category | Cases |
 |---|---:|
@@ -28,6 +28,10 @@ The deterministic suite uses seed 241019 and 432 heldout requests:
 | Other invalid and multi-error ordering requests | 4 |
 | Seeded random valid requests | 300 |
 | Profile, alarm, clamp and disabled boundaries | 56 |
+
+The original corpus contained 432 requests. Corpus v2 excludes five exact public-example overlaps and adds three integral numeric representation cases. The final corpus contains 430 heldout requests. The report records its SHA-256. This evaluator correction happened after generation without modifying or repairing generated ports.
+
+The harness gives each candidate a 15-second deadline, a CPU limit, and a live 1 MiB per-stream file-size limit on Linux. It kills the process group after execution and rejects malformed output, incorrect response counts, and missing boolean `ok` fields. This is a resource boundary for locally reviewed candidates, not a security sandbox. Do not run untrusted code on a sensitive host.
 
 The harness compiles each artifact with TypeScript strict mode, executes a shared JSON adapter, and compares whole JSON responses against the oracle. A missing artifact has no behavioral result. Matching responses demonstrate parity on this finite suite. They do not prove equivalence on all inputs. The inputs are JSON; non-JSON JavaScript values such as undefined, NaN and cyclic objects fall outside the harness domain.
 

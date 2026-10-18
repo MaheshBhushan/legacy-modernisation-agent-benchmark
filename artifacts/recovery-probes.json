@@ -52,25 +52,6 @@
   {
     "input": {
       "profile": "temperature",
-      "sampleMs": 9,
-      "gain": 1,
-      "offsetMilli": 0,
-      "rawMilli": 22000,
-      "alarmLowMilli": 0,
-      "alarmHighMilli": 80000,
-      "enabled": true
-    },
-    "observed": {
-      "ok": false,
-      "error": {
-        "code": "INVALID_REQUEST",
-        "field": "sampleMs"
-      }
-    }
-  },
-  {
-    "input": {
-      "profile": "temperature",
       "sampleMs": 10,
       "gain": 1,
       "offsetMilli": 0,
@@ -86,28 +67,6 @@
       "readingMilli": 22000,
       "status": "ok",
       "warnings": []
-    }
-  },
-  {
-    "input": {
-      "profile": "temperature",
-      "sampleMs": 11,
-      "gain": 1,
-      "offsetMilli": 0,
-      "rawMilli": 22000,
-      "alarmLowMilli": 0,
-      "alarmHighMilli": 80000,
-      "enabled": true
-    },
-    "observed": {
-      "ok": true,
-      "profile": "temperature",
-      "effectiveSampleMs": 20,
-      "readingMilli": 22000,
-      "status": "ok",
-      "warnings": [
-        "sample-rounded"
-      ]
     }
   },
   {
@@ -270,26 +229,6 @@
     "input": {
       "profile": "temperature",
       "sampleMs": 100,
-      "gain": 1,
-      "offsetMilli": 0,
-      "rawMilli": 22000,
-      "alarmLowMilli": 0,
-      "alarmHighMilli": 80000,
-      "enabled": true
-    },
-    "observed": {
-      "ok": true,
-      "profile": "temperature",
-      "effectiveSampleMs": 100,
-      "readingMilli": 22000,
-      "status": "ok",
-      "warnings": []
-    }
-  },
-  {
-    "input": {
-      "profile": "temperature",
-      "sampleMs": 100,
       "gain": 2,
       "offsetMilli": 0,
       "rawMilli": 22000,
@@ -374,25 +313,6 @@
       "profile": "temperature",
       "sampleMs": 100,
       "gain": null,
-      "offsetMilli": 0,
-      "rawMilli": 22000,
-      "alarmLowMilli": 0,
-      "alarmHighMilli": 80000,
-      "enabled": true
-    },
-    "observed": {
-      "ok": false,
-      "error": {
-        "code": "INVALID_REQUEST",
-        "field": "gain"
-      }
-    }
-  },
-  {
-    "input": {
-      "profile": "temperature",
-      "sampleMs": 100,
-      "gain": true,
       "offsetMilli": 0,
       "rawMilli": 22000,
       "alarmLowMilli": 0,
@@ -1226,6 +1146,78 @@
       "error": {
         "code": "INVALID_REQUEST",
         "field": "alarmHighMilli"
+      }
+    }
+  },
+  {
+    "input": {
+      "sampleMs": 100,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "observed": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "$"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "observed": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "$"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "observed": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "$"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "gain": 1,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "observed": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "$"
       }
     }
   }

@@ -1,7 +1,16 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "corpusVersion": 2,
+  "corpusSha256": "87f1d6480d78458767fb7d1affd97387b0aadec8d0844b8cc7a075028a262332",
   "seed": 241019,
-  "caseCount": 432,
+  "caseCount": 430,
+  "caseBreakdown": {
+    "originalCases": 432,
+    "removedPublicOverlaps": 5,
+    "integralNumberRepresentations": 3,
+    "finalHeldout": 430
+  },
+  "publicExamples": 9,
   "oracle": "legacy/sensor_config.c + strict Python JSON boundary",
   "python": "3.14.6",
   "manualBaseline": null,
@@ -9,6 +18,7 @@
   "studyLimitations": [
     "One synthetic C program, one attempt per CLI, no statistical generalisation.",
     "CLI model families and tool permissions differ; elapsed time includes service and tool latency.",
+    "Claude attempt 1 could not authenticate in bare mode; attempt 2 reached the provider API usage limit. No generated Claude implementation exists.",
     "Working directories restrict task inputs by instruction, not by a security sandbox.",
     "Heldout cases are public after the frozen first attempt; repeat runs are contaminated.",
     "Line count and strict compilation are descriptive proxies, not quality scores.",
@@ -18,11 +28,11 @@
     {
       "name": "reference",
       "authorship": "agent-authored reference",
-      "cases": 432,
-      "passed": 432,
+      "cases": 430,
+      "passed": 430,
       "parity": 100.0,
       "strictCompile": true,
-      "evaluationSeconds": 0.533,
+      "evaluationSeconds": 0.552,
       "lines": 22,
       "sha256": "3755d9d36786ff60fd54eb297d023d651d91458e938a95ec18d09c76def27b02",
       "health": {
@@ -34,9 +44,9 @@
     {
       "name": "claude-code",
       "authorship": "unmodified CLI generation",
-      "cases": 432,
-      "passed": 0,
-      "parity": 0.0,
+      "cases": 430,
+      "passed": null,
+      "parity": null,
       "strictCompile": false,
       "evaluationSeconds": 0.0,
       "lines": null,
@@ -108,27 +118,6 @@
           "index": 4,
           "input": {
             "profile": "temperature",
-            "sampleMs": 9,
-            "gain": 1,
-            "offsetMilli": 0,
-            "rawMilli": 22000,
-            "alarmLowMilli": 0,
-            "alarmHighMilli": 80000,
-            "enabled": true
-          },
-          "expected": {
-            "ok": false,
-            "error": {
-              "code": "INVALID_REQUEST",
-              "field": "sampleMs"
-            }
-          },
-          "actual": null
-        },
-        {
-          "index": 5,
-          "input": {
-            "profile": "temperature",
             "sampleMs": 10,
             "gain": 1,
             "offsetMilli": 0,
@@ -148,31 +137,7 @@
           "actual": null
         },
         {
-          "index": 6,
-          "input": {
-            "profile": "temperature",
-            "sampleMs": 11,
-            "gain": 1,
-            "offsetMilli": 0,
-            "rawMilli": 22000,
-            "alarmLowMilli": 0,
-            "alarmHighMilli": 80000,
-            "enabled": true
-          },
-          "expected": {
-            "ok": true,
-            "profile": "temperature",
-            "effectiveSampleMs": 20,
-            "readingMilli": 22000,
-            "status": "ok",
-            "warnings": [
-              "sample-rounded"
-            ]
-          },
-          "actual": null
-        },
-        {
-          "index": 7,
+          "index": 5,
           "input": {
             "profile": "temperature",
             "sampleMs": 59999,
@@ -196,7 +161,7 @@
           "actual": null
         },
         {
-          "index": 8,
+          "index": 6,
           "input": {
             "profile": "temperature",
             "sampleMs": 60000,
@@ -218,7 +183,7 @@
           "actual": null
         },
         {
-          "index": 9,
+          "index": 7,
           "input": {
             "profile": "temperature",
             "sampleMs": 60001,
@@ -239,7 +204,7 @@
           "actual": null
         },
         {
-          "index": 10,
+          "index": 8,
           "input": {
             "profile": "temperature",
             "sampleMs": null,
@@ -260,7 +225,7 @@
           "actual": null
         },
         {
-          "index": 11,
+          "index": 9,
           "input": {
             "profile": "temperature",
             "sampleMs": true,
@@ -281,7 +246,7 @@
           "actual": null
         },
         {
-          "index": 12,
+          "index": 10,
           "input": {
             "profile": "temperature",
             "sampleMs": "1",
@@ -302,7 +267,7 @@
           "actual": null
         },
         {
-          "index": 13,
+          "index": 11,
           "input": {
             "profile": "temperature",
             "sampleMs": 1.5,
@@ -323,7 +288,7 @@
           "actual": null
         },
         {
-          "index": 14,
+          "index": 12,
           "input": {
             "profile": "temperature",
             "sampleMs": 100,
@@ -344,29 +309,7 @@
           "actual": null
         },
         {
-          "index": 15,
-          "input": {
-            "profile": "temperature",
-            "sampleMs": 100,
-            "gain": 1,
-            "offsetMilli": 0,
-            "rawMilli": 22000,
-            "alarmLowMilli": 0,
-            "alarmHighMilli": 80000,
-            "enabled": true
-          },
-          "expected": {
-            "ok": true,
-            "profile": "temperature",
-            "effectiveSampleMs": 100,
-            "readingMilli": 22000,
-            "status": "ok",
-            "warnings": []
-          },
-          "actual": null
-        },
-        {
-          "index": 16,
+          "index": 13,
           "input": {
             "profile": "temperature",
             "sampleMs": 100,
@@ -388,7 +331,7 @@
           "actual": null
         },
         {
-          "index": 17,
+          "index": 14,
           "input": {
             "profile": "temperature",
             "sampleMs": 100,
@@ -412,7 +355,7 @@
           "actual": null
         },
         {
-          "index": 18,
+          "index": 15,
           "input": {
             "profile": "temperature",
             "sampleMs": 100,
@@ -436,11 +379,74 @@
           "actual": null
         },
         {
-          "index": 19,
+          "index": 16,
           "input": {
             "profile": "temperature",
             "sampleMs": 100,
             "gain": 17,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "gain"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 17,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": null,
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "gain"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 18,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": "1",
+            "offsetMilli": 0,
+            "rawMilli": 22000,
+            "alarmLowMilli": 0,
+            "alarmHighMilli": 80000,
+            "enabled": true
+          },
+          "expected": {
+            "ok": false,
+            "error": {
+              "code": "INVALID_REQUEST",
+              "field": "gain"
+            }
+          },
+          "actual": null
+        },
+        {
+          "index": 19,
+          "input": {
+            "profile": "temperature",
+            "sampleMs": 100,
+            "gain": 1.5,
             "offsetMilli": 0,
             "rawMilli": 22000,
             "alarmLowMilli": 0,
@@ -491,11 +497,11 @@
     {
       "name": "codex",
       "authorship": "unmodified CLI generation",
-      "cases": 432,
-      "passed": 432,
+      "cases": 430,
+      "passed": 430,
       "parity": 100.0,
       "strictCompile": true,
-      "evaluationSeconds": 0.532,
+      "evaluationSeconds": 0.55,
       "lines": 65,
       "sha256": "e4ba476af4d951d7fce895b20c8dc16be5b41bdd6fc900cebf4a01469c013eaa",
       "health": {

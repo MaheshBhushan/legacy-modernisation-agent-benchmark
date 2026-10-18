@@ -1,5 +1,7 @@
 """Deterministic heldout boundaries, malformed requests, and seeded samples."""
 import random
+import json
+from pathlib import Path
 from .protocol import DEFAULT
 
 def cases():
@@ -17,4 +19,8 @@ def cases():
     for profile in ('temperature','pressure'):
         for raw in (-40001,-40000,-39999,-1,0,1,79999,80000,80001,124999,125000,125001,999999,1000000):
             for enabled in (True,False):output.append(DEFAULT|{"profile":profile,"rawMilli":raw,"enabled":enabled,"sampleMs":11})
+    # Evaluation corpus v2 removes overlap with public examples and adds JSON integral-number representations.
+    public=[v["input"] for v in json.loads((Path(__file__).resolve().parents[1]/"spec/public-cases.json").read_text())]
+    output=[v for v in output if v not in public]
+    output += [DEFAULT|{"sampleMs":103.0,"gain":1.0,"offsetMilli":-0.0},DEFAULT|{"sampleMs":1e1,"rawMilli":-0.0},DEFAULT|{"gain":False,"sampleMs":100.0}]
     return output

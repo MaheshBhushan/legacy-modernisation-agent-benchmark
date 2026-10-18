@@ -17,6 +17,12 @@ class OracleTests(unittest.TestCase):
         value=evaluate(DEFAULT|{'sampleMs':11,'rawMilli':1000000,'enabled':False})
         self.assertEqual(value['warnings'],['sample-rounded','reading-clamped'])
         self.assertEqual(value['status'],'disabled')
+    def test_integral_json_numbers(self):
+        self.assertEqual(evaluate(DEFAULT|{'sampleMs':100.0,'gain':1.0,'offsetMilli':-0.0}),evaluate(DEFAULT))
+        self.assertFalse(evaluate(DEFAULT|{'gain':True})['ok'])
+    def test_heldout_excludes_public(self):
+        public=[c['input'] for c in json.loads((ROOT/'spec/public-cases.json').read_text())]
+        self.assertTrue(all(v not in public for v in cases()))
     def test_alarm_equality_is_ok(self):
         self.assertEqual(evaluate(DEFAULT|{'rawMilli':80000})['status'],'ok')
     def test_reference_matches_oracle_and_preserves_input(self):

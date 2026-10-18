@@ -29,12 +29,12 @@ Open `http://localhost:4200`. The Angular dashboard shows measured parity, compi
 
 | Implementation | Exact JSON parity | Strict compile | Evidence |
 |---|---:|---|---|
-| Agent-authored reference | 432 / 432 | Passed | [Source](ports/reference/src/port.ts) |
-| Codex, GPT-6.1 Sol medium | 432 / 432 | Passed | [Original artifact](variants/codex/port.ts), [provenance](variants/codex/provenance.json) |
+| Agent-authored reference | 430 / 430 | Passed | [Source](ports/reference/src/port.ts) |
+| Codex, GPT-6.1 Sol medium | 430 / 430 | Passed | [Original artifact](variants/codex/port.ts), [provenance](variants/codex/provenance.json) |
 | Claude Code, Sonnet | Unavailable | No artifact | [Provider usage-limit response](variants/claude-code/stdout.jsonl) |
 | Independent manual baseline | Not run | Not run | [Import workflow](docs/METHODOLOGY.md#independent-manual-baseline) |
 
-These results cover 432 deterministic heldout requests across malformed requests, boundary conditions, 300 seeded random requests, and both sensor profiles. Nine public examples were supplied during generation. Both profiles appeared in the task specification. These results measure cross-profile parity and do not establish transfer to unseen tasks.
+These results cover 430 deterministic heldout requests across malformed requests, boundary conditions, 300 seeded random requests, and both sensor profiles. Nine public examples were supplied during generation. Evaluation corpus v2 removes five overlaps and adds three integral JSON-number cases; no generation feedback was supplied. Both profiles appeared in the task specification. These results measure cross-profile parity and do not establish transfer to unseen tasks.
 
 Claude's first attempt failed authentication in bare mode. Its authenticated retry reached an API usage limit. The provider reported access would resume on 2026-11-01. The repository retains both attempts and does not substitute a generated port.
 
