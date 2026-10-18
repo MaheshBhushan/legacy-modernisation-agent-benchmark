@@ -1,0 +1,188 @@
+[
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": true,
+      "profile": "temperature",
+      "effectiveSampleMs": 100,
+      "readingMilli": 22000,
+      "status": "ok",
+      "warnings": []
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 11,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": true,
+      "profile": "temperature",
+      "effectiveSampleMs": 20,
+      "readingMilli": 22000,
+      "status": "ok",
+      "warnings": [
+        "sample-rounded"
+      ]
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "gain": 16,
+      "offsetMilli": 0,
+      "rawMilli": 1000000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": true,
+      "profile": "temperature",
+      "effectiveSampleMs": 100,
+      "readingMilli": 125000,
+      "status": "high",
+      "warnings": [
+        "reading-clamped"
+      ]
+    }
+  },
+  {
+    "input": {
+      "profile": "pressure",
+      "sampleMs": 100,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": -1,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": true,
+      "profile": "pressure",
+      "effectiveSampleMs": 100,
+      "readingMilli": 0,
+      "status": "ok",
+      "warnings": [
+        "reading-clamped"
+      ]
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 11,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": -1000000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": false
+    },
+    "expected": {
+      "ok": true,
+      "profile": "temperature",
+      "effectiveSampleMs": 20,
+      "readingMilli": -40000,
+      "status": "disabled",
+      "warnings": [
+        "sample-rounded",
+        "reading-clamped"
+      ]
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 9,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "sampleMs"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "gain": true,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "gain"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 100,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 22000,
+      "alarmLowMilli": 80000,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": false,
+      "error": {
+        "code": "INVALID_REQUEST",
+        "field": "alarmHighMilli"
+      }
+    }
+  },
+  {
+    "input": {
+      "profile": "temperature",
+      "sampleMs": 10,
+      "gain": 1,
+      "offsetMilli": 0,
+      "rawMilli": 80000,
+      "alarmLowMilli": 0,
+      "alarmHighMilli": 80000,
+      "enabled": true
+    },
+    "expected": {
+      "ok": true,
+      "profile": "temperature",
+      "effectiveSampleMs": 10,
+      "readingMilli": 80000,
+      "status": "ok",
+      "warnings": []
+    }
+  }
+]

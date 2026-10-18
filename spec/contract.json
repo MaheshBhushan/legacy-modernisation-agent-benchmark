@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "request": {
+    "profile": [
+      "temperature",
+      "pressure"
+    ],
+    "sampleMs": [
+      10,
+      60000
+    ],
+    "gain": [
+      1,
+      16
+    ],
+    "offsetMilli": [
+      -100000,
+      100000
+    ],
+    "rawMilli": [
+      -1000000,
+      1000000
+    ],
+    "alarmLowMilli": [
+      -20000000,
+      20000000
+    ],
+    "alarmHighMilli": [
+      -20000000,
+      20000000
+    ],
+    "enabled": "boolean"
+  },
+  "required": "all eight keys, no extras",
+  "validationOrder": [
+    "profile",
+    "sampleMs",
+    "gain",
+    "offsetMilli",
+    "rawMilli",
+    "alarmLowMilli",
+    "alarmHighMilli",
+    "enabled"
+  ],
+  "failure": {
+    "ok": false,
+    "error": {
+      "code": "INVALID_REQUEST",
+      "field": "first invalid key; $ for object/keyset mismatch"
+    }
+  },
+  "semantics": [
+    "alarmLowMilli < alarmHighMilli, otherwise alarmHighMilli invalid",
+    "effectiveSampleMs = ceil(sampleMs / 10) * 10",
+    "readingMilli = rawMilli * gain + offsetMilli, clamped to temperature [-40000,125000] or pressure [0,1000000]",
+    "status disabled if !enabled; otherwise low if reading < low, high if reading > high, ok otherwise",
+    "warnings sample-rounded then reading-clamped when applicable, including disabled requests"
+  ],
+  "successKeys": [
+    "ok",
+    "profile",
+    "effectiveSampleMs",
+    "readingMilli",
+    "status",
+    "warnings"
+  ]
+}
