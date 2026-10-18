@@ -32,7 +32,7 @@
       "passed": 430,
       "parity": 100.0,
       "strictCompile": true,
-      "evaluationSeconds": 0.552,
+      "evaluationSeconds": 0.604,
       "lines": 22,
       "sha256": "3755d9d36786ff60fd54eb297d023d651d91458e938a95ec18d09c76def27b02",
       "health": {
@@ -501,7 +501,7 @@
       "passed": 430,
       "parity": 100.0,
       "strictCompile": true,
-      "evaluationSeconds": 0.55,
+      "evaluationSeconds": 0.691,
       "lines": 65,
       "sha256": "e4ba476af4d951d7fce895b20c8dc16be5b41bdd6fc900cebf4a01469c013eaa",
       "health": {

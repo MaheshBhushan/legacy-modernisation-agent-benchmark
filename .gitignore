@@ -6,3 +6,5 @@ __pycache__/
 .scratch/agent-runs/
 
 .angular/
+
+.code-health-cache/
