@@ -1,0 +1,55 @@
+{
+  "tool": "Playwright browser verification performed by parent agent",
+  "url": "http://127.0.0.1:4200",
+  "checks": [
+    {
+      "name": "default reference response",
+      "observed": {
+        "readingMilli": 44500,
+        "effectiveSampleMs": 110
+      },
+      "passed": true
+    },
+    {
+      "name": "invalid sampleMs9",
+      "observed": {
+        "ok": false,
+        "error": {
+          "code": "INVALID_REQUEST",
+          "field": "sampleMs"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "pressure raw-1000 disabled",
+      "observed": {
+        "readingMilli": 0,
+        "status": "disabled",
+        "warnings": [
+          "sample-rounded",
+          "reading-clamped"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "reset control",
+      "passed": true
+    },
+    {
+      "name": "390px viewport horizontal overflow",
+      "observed": false,
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "docs/screenshot.png",
+    "docs/screenshot-mobile.png"
+  ],
+  "notes": [
+    "Parent inspected both screenshots with native vision.",
+    "Initial missing favicon404 resolved using an inline SVG favicon.",
+    "Unavailable comparison row no longer displays a parity progress bar."
+  ]
+}
