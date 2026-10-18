@@ -1,0 +1,37 @@
+{
+  "scope": "Five deliberately injected faults in the agent-authored reference; suite sensitivity only, not a general mutation coverage estimate.",
+  "mutations": [
+    {
+      "mutation": "sample-rounds-down",
+      "compiled": true,
+      "detectedCases": 327,
+      "killed": true
+    },
+    {
+      "mutation": "upper-alarm-inclusive",
+      "compiled": true,
+      "detectedCases": 2,
+      "killed": true
+    },
+    {
+      "mutation": "disabled-priority-lost",
+      "compiled": true,
+      "detectedCases": 172,
+      "killed": true
+    },
+    {
+      "mutation": "temperature-clamp-off-by-one",
+      "compiled": true,
+      "detectedCases": 77,
+      "killed": true
+    },
+    {
+      "mutation": "warning-order-reversed",
+      "compiled": true,
+      "detectedCases": 272,
+      "killed": true
+    }
+  ],
+  "killed": 5,
+  "total": 5
+}
