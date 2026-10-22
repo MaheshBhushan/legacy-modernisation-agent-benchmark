@@ -22,6 +22,18 @@ def run(tool):
         for name in ("AGENT_TASK.md", "contract.json", "public-cases.json"):
             shutil.copyfile(ROOT / "spec" / name, work / name)
         prompt = "Read AGENT_TASK.md, contract.json, and public-cases.json in this directory. Implement the requested port.ts now. Do not read paths outside this directory. Do not run tests or inspect benchmark files. Finish after writing port.ts."
+        # SECURITY: the recorded claude-code attempt ran with
+        # --permission-mode bypassPermissions. In that mode --allowedTools does
+        # NOT restrict anything: Bash, WebFetch and every other tool stay
+        # available, and the CLI inherits this process's full environment. The
+        # "do not read outside this directory" rule is a prompt instruction,
+        # not a sandbox. Inputs are this repo's own spec files, so the risk is
+        # limited to someone editing spec/ (or a model going off-script).
+        # These flags are part of the published method and are left unchanged
+        # so reruns stay comparable. benchmark/limit_exec.py's rlimits
+        # (10 s CPU, 1 MiB files) are sized for candidate code, not for an
+        # agent CLI, so this command is not wrapped in them. Run retries in a
+        # throwaway VM or container with no credentials beyond the CLI login.
         command = (
             [
                 "claude",
