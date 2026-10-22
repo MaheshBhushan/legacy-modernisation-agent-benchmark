@@ -57,7 +57,7 @@ npm run benchmark                # regenerate report from recorded artifacts; no
 python -m benchmark.mutation     # inject five faults and evaluate suite sensitivity
 ```
 
-CI repeats these checks on pushes and pull requests. Generation retries require authenticated Claude Code and Codex CLIs. Preserve existing attempts before running `python -m benchmark.experiment`. Published heldout cases can contaminate new attempts.
+CI repeats these checks on pushes and pull requests. Generation retries require authenticated Claude Code and Codex CLIs. Preserve existing attempts before running `python -m benchmark.experiment`. **Security note:** the recorded Claude Code attempt uses `--permission-mode bypassPermissions`, under which `--allowedTools Read,Write,Edit` does not restrict tools; the agent can run shell commands and reach the network with your environment. The flags are kept unchanged so reruns match the published method. Run generation retries only inside a disposable VM or container that holds no credentials other than the agent CLI login. Published heldout cases can contaminate new attempts.
 
 ## License and credits
 
