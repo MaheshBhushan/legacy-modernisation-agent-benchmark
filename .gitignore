@@ -8,3 +8,8 @@ __pycache__/
 .angular/
 
 .code-health-cache/
+
+# Local secrets
+.env
+.env.*
+!.env.example
